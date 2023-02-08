@@ -3,6 +3,33 @@
 function App() {
   return (
     <div className="wrapper">
+      <div className="wrapper__overlay">
+        <div className="overlay__drawer">
+          <h2>Корзина</h2>
+          <div className="drawer__content d-flex flex-column justify-between">
+          <ul className="drawer__list">
+            <li className="drawer__item">
+              <img className="item__img" src="/img/Sneakersimg.jpg" alt="sneakers" width={70} height={70} />
+              <div className="sneakers__info">
+                <p className="mb-10">Мужские Кроссовки Nike Air Max 270</p>
+                <b>8499 грн.</b>
+              </div>
+              <img  className="item__removeBtn" src="/img/deleteButton.svg" alt="delete" width={32} height={32}/>
+            </li>
+          </ul>
+          <div>
+      <div className="d-flex align-center justify-between">
+                <p>Итого:</p>
+                <b>15789 грн..</b>
+              </div>
+              <div className="d-flex align-center justify-between">
+              <p>Налог %:</p>
+                <b>2789 грн.</b>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
           <header className="d-flex justify-between align-center p-40" >
             <div className='d-flex align-center'>
               <img src='/img/logo.png' alt='Logo' width={40} height={40}/>
@@ -49,11 +76,20 @@ function App() {
                 </ul>
             
           </header>
-          <div className='content p-40'>
-            <h1 className="mb-40">Все кроссовки</h1>
+      <div className='content p-40'>
+        <div className="d-flex justify-between align-center mb-40">
+          <h1>Все кроссовки</h1>
+          <div className="search__box">
+            <img src='/img/search-icon.svg' alt="search" width={14} height={14}/>
+            <input/>
+          </div>
+          </div>
         <ul className="d-flex">
           <li className="card__item p-30">
             <div className="card d-flex flex-column">
+              <div className="card__favorite">
+                <img src="/img/unlikedButton.svg" alt="Add to favorite"/>
+              </div>
               <img className="card__img mb-15" src="/img/SneakersImg.jpg" alt="SneakersImg" width={133} height={122} />
               <h5 className="mb-15">Мужские Кроссовки Nike Blazer Mid Suede</h5>
               <div className="cardOrder d-flex justify-between align-center">
@@ -61,7 +97,7 @@ function App() {
                   <span>Цена:</span>
                   <b>12 678 грн</b>
                 </div>
-                <button className="card__button-add" type="button"><img src="/img/addButton.svg" alt="add" width={11} height={11} /></button>
+                <button className="card__button-add" type="button"><img src="/img/addButton.svg" alt="add" width={32} height={32} /></button>
               </div>
             </div>
           </li>
