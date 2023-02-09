@@ -36,7 +36,7 @@ function App() {
                 <b>2789 грн.</b>
                 </li>
           </ul>
-          <button className="drawer__orderBtn" type="button">Оформить заказ</button>
+          <button className="greenBtn" type="button">Оформить заказ <img src="/img/Arrow.svg" alt="arrow"/></button>
       </div>
     </div>
           <header className="d-flex justify-between align-center p-40" >
