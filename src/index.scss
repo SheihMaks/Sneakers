@@ -1,11 +1,11 @@
 * {
+  font-family: 'Inter', system-ui;
   box-sizing: border-box;
   outline: none;
 }
 
 body {
   margin: 0;
-  font-family: 'Inter';
     background-color: #E5E5E5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -31,9 +31,6 @@ a {
   text-decoration: none;
 }
 
-button{
-  font-family: 'Inter';
-}
 
 .wrapper{
   background: #FFFFFF;
@@ -41,143 +38,6 @@ box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04);
 border-radius: 20px;
 max-width: 1080px;
 margin: 85px auto;
-}
-
-.wrapper__overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-  z-index: 1;
-  background-color: rgba(0, 0, 0, 0.4);
-
-  .overlay__drawer {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    padding: 30px;
-    width: 420px;
-    height: 100%;
-    right: 0;
-    background: #FFFFFF;
-    box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
-
-    h2{
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 24px;
-      margin-bottom: 30px;
-    }
-
-  .drawer__list{
-    flex: 1;
-  }
-    .drawer__item{
-      display: flex;
-      align-items: center;
-      padding: 20px;
-      margin-bottom: 20px;
-      background: #FFFFFF;
-      border: 1px solid #F3F3F3;
-      border-radius: 20px;
-      overflow: auto;
-    }
-
-    .sneakers__info{
-        font-size: 14px;
-        line-height: 17px;
-        margin-top: 10px;
-    }
-    .greenBtn{
-      position: relative;
-
-      img{
-        position: absolute;
-        right: 30px;
-        bottom: 20px;
-        transition: transform 0.2s ease-in-out;
-      }
-      &:hover{
-        img{
-        transform: translateX(5px);
-        }
-      }
-    }
-  }
-}
-
-.item__img{
-  margin-right: 20px;
-}
-
-.item__removeBtn{
-  cursor: pointer;
-  opacity: 0.5;
-  transition: opacity 0.15s ease-in-out;
-
-  &:hover{
-    opacity: 1;
-  }
-}
-
-.drawer__totalBlock{
-  margin-bottom: 10px;
-  .totalBlock__item{
-    display: flex;
-    align-items: flex-end;
-    margin-bottom:20px;
-  }
-  div{
-    position: relative;
-    top: -3px;
-    flex: 1;
-    height:1px;
-    margin: 0 8px;
-    border-bottom: 1px dashed #DFDFDF;
-  }
-}
-
-.greenBtn {
-  width: 100%;
-  height: 55px;
-  border: none;
-  background: #9DD558;
-  border-radius: 18px;
-  font-weight: 600;
-  font-size: 16px;
-  text-align: center;
-  color: #FFFFFF;
-  cursor: pointer;
-  transition: background 0.2s ease-in-out;
-
-  &:hover {
-      background: lighten($color: #9DD558, $amount: 10%);
-    }
-  &:active{
-    background: darken($color: #9DD558, $amount: 5%);
-  }
-}
-
-
-
-header {
-  border-bottom: 1px solid #EAEAEA;
-  img{
-    margin-right: 15px;
-  }
-  p{
-      font-weight: 400;
-      font-size: 14px;
-      color: #9D9D9D;
-  }  
-
-span{
-  font-weight: 600;
-    font-size: 14px;
-    color: #5C5C5C;
-}
 }
 
 .search__box {
@@ -196,52 +56,3 @@ span{
   }
 }
 
-.card__item {
-  width: 210px;
-  background: #FFFFFF;
-  border: 1px solid #F8F8F8;
-  border-radius: 40px;
-  transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
-  cursor: pointer;
-
-&:hover{
-box-shadow: 0px 14px 30px rgba(0, 0, 0, 0.06);
-transform: translateY(-5px);
-}
-
-.favorite{
-  position: absolute;
-  cursor: pointer;
-}
-
-.card__img{
-  margin: 0 auto;
-}
-
-h5 {
-    font-weight: 400;
-    font-size: 14px;
-    color: #000000;
-}
-
-span{
-  font-weight: 500;
-  font-size: 11px;
-  line-height: 13px;
-  text-transform: uppercase;
-  color: #BDBDBD;
-}
-
-b{
-  font-size: 14px;
-  color: #000000;
-}
-
-.card__button-add{
-  width: 32px;
-  height: 32px;
-  background: #FFFFFF;
-  border: 0;
-  cursor:pointer;
-}
-}

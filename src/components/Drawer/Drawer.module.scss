@@ -1,0 +1,122 @@
+.wrapper__overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.4);
+
+    .overlay__drawer {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        padding: 30px;
+        width: 420px;
+        height: 100%;
+        right: 0;
+        background: #FFFFFF;
+        box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
+
+        h2 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        .drawer__list {
+            flex: 1;
+        }
+
+        .drawer__item {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            margin-bottom: 20px;
+            background: #FFFFFF;
+            border: 1px solid #F3F3F3;
+            border-radius: 20px;
+            overflow: auto;
+        }
+
+        .sneakers__info {
+            font-size: 14px;
+            line-height: 17px;
+            margin-top: 10px;
+        }
+
+        .greenBtn {
+            position: relative;
+
+            img {
+                position: absolute;
+                right: 30px;
+                bottom: 20px;
+                transition: transform 0.2s ease-in-out;
+            }
+
+            &:hover {
+                img {
+                    transform: translateX(5px);
+                }
+            }
+        }
+    }
+}
+
+.item__img {
+    margin-right: 20px;
+}
+
+.item__removeBtn {
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.15s ease-in-out;
+
+    &:hover {
+        opacity: 1;
+    }
+}
+
+.drawer__totalBlock {
+    margin-bottom: 10px;
+
+    .totalBlock__item {
+        display: flex;
+        align-items: flex-end;
+        margin-bottom: 20px;
+    }
+
+    div {
+        position: relative;
+        top: -3px;
+        flex: 1;
+        height: 1px;
+        margin: 0 8px;
+        border-bottom: 1px dashed #DFDFDF;
+    }
+}
+
+.greenBtn {
+    width: 100%;
+    height: 55px;
+    border: none;
+    background: #9DD558;
+    border-radius: 18px;
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+
+    &:hover {
+        background: lighten($color: #9DD558, $amount: 10%);
+    }
+
+    &:active {
+        background: darken($color: #9DD558, $amount: 5%);
+    }
+}

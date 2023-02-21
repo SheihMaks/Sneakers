@@ -1,5 +1,7 @@
+import styles from './Header.module.scss'
+
 export const Header = () => {
-    return(<header className="d-flex justify-between align-center p-40" >
+    return(<header className={styles.wrapper__header} >
             <div className='d-flex align-center'>
               <img src='/img/logo.png' alt='Logo' width={40} height={40}/>
               <div>
