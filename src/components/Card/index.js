@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import styles from './Card.module.scss'
 
-export const Card = ({img,name,price}) => {
+export const Card = ({img,title,price}) => {
   const [added, setAdded] = useState(false)
   
   const onHandleClick = () => {
@@ -16,7 +16,7 @@ console.log(added)
                 <img src="/img/unlikedButton.svg" alt="Add to favorite"/>
               </div>
               <img className={styles.card__img} src={img} alt="SneakersImg" width={133} height={112} />
-      <h5 className="mb-15">{name}</h5>
+      <h5 className="mb-15">{title}</h5>
       <div className={styles.card__order}>
                 <div className="d-flex flex-column align-start">
                   <span>Цена:</span>
