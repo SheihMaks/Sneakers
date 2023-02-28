@@ -1,27 +1,20 @@
 import styles from './Drawer.module.scss'
 
-export const Drawer = ({onCloseDrawer}) => {
+export const Drawer = ({onCloseDrawer,items}) => {
     return (<div
         // style={{ display: "none" }}
       className={styles.wrapper__overlay} ><div className={styles.overlay__drawer}>
             <h2>Корзина  <img onClick={onCloseDrawer} className={styles.item__removeBtn} src="/img/deleteButton.svg" alt="delete" width={32} height={32}/></h2>
             <ul className={styles.drawer__list}>
-            <li className={styles.drawer__item}>
-              <img className={styles.item__img} src="/img/Sneakersimg.jpg" alt="sneakers" width={70} height={70} />
+          {items.map(({img,title,price}) => {
+            return (<li className={styles.drawer__item}>
+              <img className={styles.item__img} src={img} alt="sneakers" width={70} height={70} />
               <div className={styles.sneakers__info}>
-                <p className="mb-10">Мужские Кроссовки Nike Air Max 270</p>
-                <b>8499 грн.</b>
+                <p className="mb-10">{title}</p>
+                <b>{price} грн.</b>
               </div>
               <img  className={styles.item__removeBtn} src="/img/deleteButton.svg" alt="delete" width={32} height={32}/>
-              </li>
-              <li className={styles.drawer__item}>
-              <img className={styles.item__img} src="/img/Sneakersimg.jpg" alt="sneakers" width={70} height={70} />
-              <div className={styles.sneakers__info}>
-                <p className="mb-10">Мужские Кроссовки Nike Air Max 270</p>
-                <b>8499 грн.</b>
-              </div>
-            <img className={styles.item__removeBtn} src="/img/deleteButton.svg" alt="delete" width={32} height={32}/>
-            </li>
+              </li>)})}
           </ul>
           <ul className={styles.drawer__totalBlock}>
       <li className={styles.totalBlock__item}>

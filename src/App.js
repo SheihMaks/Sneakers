@@ -90,7 +90,8 @@ import { Header } from './components/Header';
 // ]
 
 function App() {
-  const [items,setItems]= useState([])
+  const [items, setItems] = useState([])
+  const [itemsUser,setItemsUser]=useState([])
   const [isOpenDrawer, setIsOpenDrawer]=useState(false)
   
   useEffect(() => {
@@ -106,9 +107,13 @@ function App() {
     setIsOpenDrawer(false)
   }
 
+  const onAddCard = (data) => {
+    setItemsUser(prev=>[...prev,data])
+  }
+  
   return (
     <div className="wrapper">
-      {isOpenDrawer && <Drawer onCloseDrawer={closeDrawer} />}
+      {isOpenDrawer && <Drawer items={itemsUser} onCloseDrawer={closeDrawer} />}
       <Header
         onOpenDrawer={openDrawer} />
       <div className='content p-40'>
@@ -126,6 +131,7 @@ function App() {
               img={item.imgURL}
               title={item.title}
               price={item.price}
+              onPlus={onAddCard}
               id={item.id} />)
           })}
             </ul>
