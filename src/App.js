@@ -91,7 +91,8 @@ import { Header } from './components/Header';
 
 function App() {
   const [items, setItems] = useState([])
-  const [itemsUser,setItemsUser]=useState([])
+  const [itemsUser, setItemsUser] = useState([])
+  const [searchValue,setSearchValue]=useState('')
   const [isOpenDrawer, setIsOpenDrawer]=useState(false)
   
   useEffect(() => {
@@ -102,6 +103,11 @@ function App() {
   const openDrawer = () => {
     setIsOpenDrawer(true)
   }
+
+  const onSearchValue = (event) => {
+    setSearchValue(event.target.value)
+    console.log(searchValue)
+}
 
   const closeDrawer = () => {
     setIsOpenDrawer(false)
@@ -118,14 +124,14 @@ function App() {
         onOpenDrawer={openDrawer} />
       <div className='content p-40'>
         <div className="d-flex justify-between align-center mb-40">
-          <h1>Все кроссовки</h1>
+          <h1>{searchValue ? `Идет поиск по запросу: "${searchValue}"` : "Все кроссовки"}</h1>
           <div className="search__box">
             <img src='/img/search-icon.svg' alt="search" width={14} height={14}/>
-            <input/>
+            <input type="text" value={searchValue} onChange={onSearchValue} placeholder='Поиск...'/>
           </div>
           </div>
         <ul className="sneakers__list">
-          {items && items.map((item)=>{
+          {items && items.filter(item=>item.title.toLowerCase().includes(searchValue.toLowerCase())).map((item)=>{
             return (<Card
               key={item.id}
               img={item.imgURL}

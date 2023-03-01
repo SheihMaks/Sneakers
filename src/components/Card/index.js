@@ -9,8 +9,6 @@ export const Card = ({img,title,price,onPlus}) => {
     onPlus({img,title,price})
   }
 
-console.log(added)
-
   return (<li className={styles.card__item}>
             <div className="d-flex flex-column">
       <div className={styles.favorite}>
