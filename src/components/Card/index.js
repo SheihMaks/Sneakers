@@ -4,9 +4,9 @@ import styles from './Card.module.scss'
 export const Card = ({img,title,price,onPlus}) => {
   const [added, setAdded] = useState(false)
   
-  const onHandleClick = () => {
+  const onHandleClick = ({ img, title, price,id }) => {
     setAdded(!added)
-    onPlus({img,title,price})
+    onPlus({img,title,price,id})
   }
 
   return (<li className={styles.card__item}>
