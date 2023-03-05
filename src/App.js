@@ -37,10 +37,9 @@ function App() {
   }
   
   const onDeleteCard = (id) => {
-    // setItemsUser(itemsUser.filter(item=> item.id!==id))
-    axios.delete(`https://63fd1397677c415873196c8d.mockapi.io/cart/${id}`, id)
-    
-  }
+    axios.delete(`https://63fd1397677c415873196c8d.mockapi.io/cart/${id}`)
+    setItemsUser(itemsUser.filter(item=> item.id!==id))
+    }
   return (
     <div className="wrapper">
       {isOpenDrawer && <Drawer items={itemsUser} onCloseDrawer={closeDrawer} onDeleteCard={onDeleteCard} />}

@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import styles from './Card.module.scss'
 
-export const Card = ({img,title,price,onPlus}) => {
+export const Card = ({img,title,price,id,onPlus}) => {
   const [added, setAdded] = useState(false)
   
-  const onHandleClick = ({ img, title, price,id }) => {
+  const onHandleClick = () => {
     setAdded(!added)
     onPlus({img,title,price,id})
   }
