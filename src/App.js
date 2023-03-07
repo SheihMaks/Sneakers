@@ -8,6 +8,7 @@ import { Header } from './components/Header';
 function App() {
   const [items, setItems] = useState([])
   const [itemsUser, setItemsUser] = useState([])
+  const [favorites, setFavorites] = useState([])
   const [searchValue,setSearchValue]=useState('')
   const [isOpenDrawer, setIsOpenDrawer]=useState(false)
   
@@ -40,6 +41,10 @@ function App() {
     axios.delete(`https://63fd1397677c415873196c8d.mockapi.io/cart/${id}`)
     setItemsUser(itemsUser.filter(item=> item.id!==id))
     }
+
+  const onAddFavorites=(data)=>{
+    setFavorites(prev=>[...prev,data])
+  }
   return (
     <div className="wrapper">
       {isOpenDrawer && <Drawer items={itemsUser} onCloseDrawer={closeDrawer} onDeleteCard={onDeleteCard} />}
@@ -57,11 +62,14 @@ function App() {
           {items && items.filter(item=>item.title.toLowerCase().includes(searchValue.toLowerCase())).map((item)=>{
             return (<Card
               key={item.id}
+              itemsUser={itemsUser}
               img={item.imgURL}
               title={item.title}
               price={item.price}
               onPlus={onAddCard}
-              id={item.id} />)
+              onRemove={onDeleteCard}
+              onAddFavorites={onAddFavorites}
+              id={item.id.toString()} />)
           })}
             </ul>
           </div>

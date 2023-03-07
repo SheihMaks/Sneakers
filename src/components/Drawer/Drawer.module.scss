@@ -48,9 +48,8 @@
         }
 
         .greenBtn {
-            position: relative;
 
-            img {
+            .arrow {
                 position: absolute;
                 right: 30px;
                 bottom: 20px;
@@ -58,7 +57,7 @@
             }
 
             &:hover {
-                img {
+                .arrow {
                     transform: translateX(5px);
                 }
             }
@@ -100,7 +99,7 @@
 }
 
 .greenBtn {
-    width: 100%;
+    position:relative;
     height: 55px;
     border: none;
     background: #9DD558;
@@ -119,4 +118,47 @@
     &:active {
         background: darken($color: #9DD558, $amount: 5%);
     }
+}
+
+.container__empty{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+    img{
+        margin-top:40%;
+        margin-bottom:20px;
+    }
+
+    h3{
+        font-weight: 600;
+        font-size: 22px;
+        margin-bottom:10px;
+    }
+    
+    p{
+        width:285px;
+        font-size: 16px;
+        line-height: 24px;
+        text-align: center;
+        opacity: 0.4;
+        margin-bottom:40px;
+    }
+
+    .greenBtn{
+        padding: 18px 30px 18px 50px;
+
+        .arrowBack{
+            position:absolute;
+            left:30px;
+            bottom:0px;
+            transition: transform 0.2s ease-in-out;
+        }
+        &:hover{
+            .arrowBack{
+                transform:translateX(-5px)}
+        }
+    }
+
+
 }
