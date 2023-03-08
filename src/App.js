@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios';
-import { Card } from './components/Card'
-import { Drawer } from './components/Drawer';
-import { Header } from './components/Header';
-
+import { Drawer } from 'components/Drawer';
+import { Header } from 'components/Header';
+import {SearchBox} from 'components/SearchBox';
+import {ItemList} from 'components/ItemList';
 
 function App() {
   const [items, setItems] = useState([])
   const [itemsUser, setItemsUser] = useState([])
-  const [favorites, setFavorites] = useState([])
+  const [favorites, setFavorites] = useState(()=>{
+    return JSON.parse(localStorage.getItem('favoritesList')) ?? []
+  })
   const [searchValue,setSearchValue]=useState('')
   const [isOpenDrawer, setIsOpenDrawer]=useState(false)
   
@@ -17,6 +19,9 @@ function App() {
     axios.get('https://63fd1397677c415873196c8d.mockapi.io/items').then(res => setItems(res.data))
     axios.get('https://63fd1397677c415873196c8d.mockapi.io/cart').then(res=> setItemsUser(res.data))
   },[])
+
+  useEffect(()=>{
+    localStorage.setItem("favoritesList",JSON.stringify(favorites))},[favorites])
 
 
   const openDrawer = () => {
@@ -53,25 +58,17 @@ function App() {
       <div className='content p-40'>
         <div className="d-flex justify-between align-center mb-40">
           <h1>{searchValue ? `Идет поиск по запросу: "${searchValue}"` : "Все кроссовки"}</h1>
-          <div className="search__box">
-            <img src='/img/search-icon.svg' alt="search" width={14} height={14}/>
-            <input type="text" value={searchValue} onChange={onSearchValue} placeholder='Поиск...'/>
+          <SearchBox searchValue={searchValue} onSearchValue={onSearchValue}/>
           </div>
-          </div>
-        <ul className="sneakers__list">
-          {items && items.filter(item=>item.title.toLowerCase().includes(searchValue.toLowerCase())).map((item)=>{
-            return (<Card
-              key={item.id}
-              itemsUser={itemsUser}
-              img={item.imgURL}
-              title={item.title}
-              price={item.price}
-              onPlus={onAddCard}
-              onRemove={onDeleteCard}
-              onAddFavorites={onAddFavorites}
-              id={item.id.toString()} />)
-          })}
-            </ul>
+          <ItemList
+          items={items}
+          itemsUser={itemsUser}
+          searchValue={searchValue}
+          onPlus={onAddCard}
+          onRemove={onDeleteCard}
+          onAddFavorites={onAddFavorites}
+          />
+        
           </div>
     </div>
   );

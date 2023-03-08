@@ -15,6 +15,7 @@ export const Card = ({itemsUser,img,title,price,id,onPlus,onRemove,onAddFavorite
 
   const onHandleFavorites=()=>{
     setAddedFavorites(!addedFavorites)
+    onAddFavorites({img,title,price,id})
   }
 
   return (<li className={styles.card__item}>
