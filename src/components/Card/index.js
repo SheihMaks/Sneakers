@@ -35,3 +35,4 @@ export const Card = ({itemsUser,img,title,price,id,onPlus,onRemove,onAddFavorite
             </div>
           </li>)
 }
+
