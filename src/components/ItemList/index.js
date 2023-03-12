@@ -88,11 +88,13 @@ import { Card } from 'components/Card';
 //   title: "Мужские Кроссовки Nike Air Max 270",
 //   price: 12840
 //  }]
-export const ItemList=({items,itemsUser,onPlus,onRemove,onAddFavorites, searchValue})=>{
+export const ItemList=({items,itemsUser,onPlus,onRemove,onAddFavorites, searchValue,favorites})=>{
     return(<ul className={styles.sneakers__list}>
           {items && items.filter(item=>item.title.toLowerCase().includes(searchValue.toLowerCase())).map((item)=>{
             return (<Card
               key={item.id}
+              items={items}
+              favorites={favorites}
               itemsUser={itemsUser}
               img={item.img}
               title={item.title}

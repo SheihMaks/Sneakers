@@ -1,14 +1,14 @@
 import { useState } from 'react'
 import styles from './Card.module.scss'
 
-export const Card = ({itemsUser,img,title,price,id,onPlus,onRemove,onAddFavorites}) => {
-  const [added, setAdded] = useState(false)
-  const [addedFavorites, setAddedFavorites]= useState(false)
+export const Card = ({itemsUser,img,title,price,id,onPlus,onRemove,onAddFavorites,favorites}) => {
+  const [added, setAdded] = useState(()=>(itemsUser?.find(item=> item.id===id)) ? true : false)
+  const [addedFavorites, setAddedFavorites]= useState(()=>(favorites && favorites.find(item=>item.id===id)) ? true : false)
   const onHandleClick = () => {
-    if(itemsUser.find(item=>item.id===id) && !added){
-      window.alert('Данный товар уже добавлен корзину')
-      return
-    }
+    // if(itemsUser.find(item=>item.id===id) && !added){
+    //   window.alert('Данный товар уже добавлен корзину')
+    //   return
+    // }
     setAdded(!added)
     if(!added) {onPlus({img,title,price,id})} else if (itemsUser.find(item=>item.id===id)) {onRemove(id)} 
   }

@@ -51,7 +51,10 @@ function App() {
     }
 
   const onAddFavorites=(data)=>{
-    setFavorites(prev=>[...prev,data])
+    if(favorites.find(item=>item.id===data.id)){
+      setFavorites(favorites.filter(item=>item.id!==data.id))
+    } else {
+      setFavorites(prev=>[...prev,data])}
   }
   return (
     <>
@@ -68,6 +71,7 @@ function App() {
           <ItemList
           items={items}
           itemsUser={itemsUser}
+          favorites={favorites}
           searchValue={searchValue}
           onPlus={onAddCard}
           onRemove={onDeleteCard}
@@ -76,6 +80,7 @@ function App() {
         </div></>}/>
           <Route path='favorites' element={<PageFavorites items={items}
           itemsUser={itemsUser}
+          favorites={favorites}
           onPlus={onAddCard}
           onRemove={onDeleteCard}
           onAddFavorites={onAddFavorites}
