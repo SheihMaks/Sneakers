@@ -146,20 +146,4 @@
         margin-bottom:40px;
     }
 
-    .greenBtn{
-        padding: 18px 30px 18px 50px;
-
-        .arrowBack{
-            position:absolute;
-            left:30px;
-            bottom:0px;
-            transition: transform 0.2s ease-in-out;
-        }
-        &:hover{
-            .arrowBack{
-                transform:translateX(-5px)}
-        }
-    }
-
-
 }

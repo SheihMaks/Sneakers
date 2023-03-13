@@ -33,7 +33,6 @@ export const Drawer = ({onCloseDrawer,items,onDeleteCard}) => {
           <img src='/img/emptyDrawer.jpg' alt="Here empty" height={120} width={120}/>
           <h3>Корзина пустая</h3>
           <p>Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ.</p>
-          {/* <button className={styles.greenBtn} type='button' onClick={onCloseDrawer}><img className={styles.arrowBack} src='/img/arrowBack.svg' alt='back'/> Вернуться назад</button> */}
           <ButtonBack onHandleClick={onCloseDrawer}/></div>}
         </div>
     </div>)
