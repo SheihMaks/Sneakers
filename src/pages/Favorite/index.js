@@ -29,7 +29,7 @@ const PageFavorites=({itemsUser, onPlus, onRemove, onAddFavorites, favorites})=>
           onPlus={onPlus}
           onRemove={onRemove}
           onAddFavorites={onAddFavorites}/></div> : <div className='d-flex flex-column align-center'>
-            <img src='img/NoFavorites.jpg' alt='No Favorites' width={70} height={70}/>
+            <img className='img-smile' src='img/NoFavorites.jpg' alt='No Favorites' width={70} height={70}/>
             <h1>Закладок нет :(</h1>
             <ButtonBack/>
           </div> )
