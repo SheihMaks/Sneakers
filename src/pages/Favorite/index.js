@@ -2,6 +2,7 @@ import {useState} from 'react';
 import {ItemList} from 'components/ItemList';
 import {SearchBox} from 'components/SearchBox';
 import {ButtonBack} from 'components/Buttons/BackBtn';
+import styles from 'pages/Favorite/Favorite.module.scss'
 
 const PageFavorites=({itemsUser, onPlus, onRemove, onAddFavorites, favorites})=>{
 
@@ -28,9 +29,10 @@ const PageFavorites=({itemsUser, onPlus, onRemove, onAddFavorites, favorites})=>
           searchValue={searchFavorites}
           onPlus={onPlus}
           onRemove={onRemove}
-          onAddFavorites={onAddFavorites}/></div> : <div className='d-flex flex-column align-center'>
-            <img className='img-smile' src='img/NoFavorites.jpg' alt='No Favorites' width={70} height={70}/>
-            <h1>Закладок нет :(</h1>
+          onAddFavorites={onAddFavorites}/></div> : <div className={styles.container__emptyFavorites}>
+        <img className={styles.imgSmile} src='img/NoFavorites.jpg' alt='No Favorites' width={70} height={70}/>
+        <h1>Закладок нет :(</h1>
+        <p>Вы ничего не добавляли в закладки</p>
             <ButtonBack/>
           </div> )
 }
