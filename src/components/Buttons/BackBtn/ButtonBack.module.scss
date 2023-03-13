@@ -1,0 +1,31 @@
+.greenBtnBack {
+    position: relative;
+    height: 55px;
+    padding: 18px 30px 18px 50px;
+    border: none;
+    background: #9DD558;
+    border-radius: 18px;
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+
+    .arrowBack {
+            position: absolute;
+            left: 30px;
+            bottom: 0px;
+            transition: transform 0.2s ease-in-out;
+        }
+    &:hover {
+        background: lighten($color: #9DD558, $amount: 10%);
+        .arrowBack {
+                transform: translateX(-5px)
+            }
+    }
+
+    &:active {
+        background: darken($color: #9DD558, $amount: 5%);
+    }
+}
