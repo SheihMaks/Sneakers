@@ -60,7 +60,7 @@ function App() {
     <>
     {isOpenDrawer && <Drawer items={itemsUser} onCloseDrawer={closeDrawer} onDeleteCard={onDeleteCard} />}
     <Routes>
-    <Route path='/Sneakers-React' element={<AppBar onOpenDrawer={openDrawer}/>}>
+    <Route path='/' element={<AppBar onOpenDrawer={openDrawer}/>}>
       <Route path='items' element={
       <>
       <div className='content p-40'>
