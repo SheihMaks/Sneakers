@@ -88,10 +88,13 @@ import { Card } from 'components/Card';
 //   title: "Мужские Кроссовки Nike Air Max 270",
 //   price: 12840
 //  }]
-export const ItemList=({items,itemsUser,onPlus,onRemove,onAddFavorites, searchValue,favorites, isLoading})=>{
+export const ItemList = ({ items, itemsUser, onPlus, onRemove, onAddFavorites, searchValue, favorites, isLoading }) => {
+  const filteredItems = items.filter(item => item.title.toLowerCase().includes(searchValue.toLowerCase()))
+  
+  console.log(isLoading)
     return(<ul className={styles.sneakers__list}>
-          {isLoading ? [...Array(10)] : items.filter(item=>item.title.toLowerCase().includes(searchValue.toLowerCase())).map((item)=>{
-            return (<Card
+          {isLoading ? [...Array(10)] : filteredItems.map((item)=>
+            (<Card
               key={item.id}
               items={items}
               favorites={favorites}
@@ -104,6 +107,6 @@ export const ItemList=({items,itemsUser,onPlus,onRemove,onAddFavorites, searchVa
               onAddFavorites={onAddFavorites}
               isLoading={isLoading}
               id={item.id.toString()} />)
-          })}
+          )}
             </ul>)
 }

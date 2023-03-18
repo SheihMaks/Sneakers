@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { CardLayout } from 'components/ContentLoader';
 import styles from './Card.module.scss'
 
-export const Card = ({itemsUser,img,title,price,id,onPlus,onRemove,onAddFavorites,favorites, isLoading}) => {
+export const Card = ({ itemsUser, img, title, price, id, onPlus, onRemove, onAddFavorites, favorites, isLoading = true }) => {
   const [added, setAdded] = useState(() => (itemsUser?.find(item => item.id === id)) ? true : false)
   const [addedFavorites, setAddedFavorites]= useState(()=>(favorites && favorites.find(item=>item.id===id)) ? true : false)
   const onHandleClick = () => {

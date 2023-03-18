@@ -21,6 +21,7 @@ function App() {
     // fetch('https://63fd1397677c415873196c8d.mockapi.io/items').then(res => { return res.json() }).then(res => setItems(res))
     async function fetchItems() {
       try {
+        setIsLoading(true)
         const resItems= await axios.get('https://63fd1397677c415873196c8d.mockapi.io/items')
       const resCart = await axios.get('https://63fd1397677c415873196c8d.mockapi.io/cart')
         setIsLoading(false)
