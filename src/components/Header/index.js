@@ -5,7 +5,7 @@ export const Header = ({onOpenDrawer}) => {
     return(<header className={styles.wrapper__header} >
             <NavLink to='/items'>
               <div className='d-flex align-center'>
-                <img src='/img/logo.png' alt='Logo' width={40} height={40}/>
+                <img src='img/logo.png' alt='Logo' width={40} height={40}/>
                 <div>
                   <h3 className="text-uppercause">REACT SNEAKERS</h3>
                   <p>Магазин лучших кроссовок</p>

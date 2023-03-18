@@ -14,12 +14,25 @@ function App() {
     return JSON.parse(localStorage.getItem('favoritesList')) ?? []
   })
   const [searchValue,setSearchValue]=useState('')
-  const [isOpenDrawer, setIsOpenDrawer]=useState(false)
+  const [isOpenDrawer, setIsOpenDrawer] = useState(false)
+  const [isLoading,setIsLoading]= useState(true)
   
   useEffect(() => {
     // fetch('https://63fd1397677c415873196c8d.mockapi.io/items').then(res => { return res.json() }).then(res => setItems(res))
-    axios.get('https://63fd1397677c415873196c8d.mockapi.io/items').then(res => setItems([...res.data]))
-    axios.get('https://63fd1397677c415873196c8d.mockapi.io/cart').then(res=> setItemsUser([...res.data]))
+    async function fetchItems() {
+      try {
+        const resItems= await axios.get('https://63fd1397677c415873196c8d.mockapi.io/items')
+      const resCart = await axios.get('https://63fd1397677c415873196c8d.mockapi.io/cart')
+        setIsLoading(false)
+        setItemsUser([...resCart.data])
+        setItems([...resItems.data])
+        
+      } catch {
+        alert('error')
+      }
+      
+    }
+    fetchItems()
   },[])
 
   useEffect(()=>{
@@ -32,20 +45,19 @@ function App() {
 
   const onSearchValue = (event) => {
     setSearchValue(event.target.value)
-    console.log(searchValue)
 }
 
   const closeDrawer = () => {
     setIsOpenDrawer(false)
   }
 
-  const onAddCard = (data) => {
-    console.log(data)
-    axios.post(`https://63fd1397677c415873196c8d.mockapi.io/cart`, data)
+  const onAddCard =async (obj) => {
+    const { data } =await axios.post(`https://63fd1397677c415873196c8d.mockapi.io/cart`, obj)
     setItemsUser(prev=>[...prev,data])
   }
   
   const onDeleteCard = (id) => {
+    // console.log(id)
     axios.delete(`https://63fd1397677c415873196c8d.mockapi.io/cart/${id}`)
     setItemsUser((prev)=>prev.filter(item=> item.id!==id))
     }
@@ -75,7 +87,8 @@ function App() {
           searchValue={searchValue}
           onPlus={onAddCard}
           onRemove={onDeleteCard}
-          onAddFavorites={onAddFavorites}
+                  onAddFavorites={onAddFavorites}
+                  isLoading={isLoading}
           />
         </div></>}/>
           <Route path='favorites' element={<PageFavorites items={items}
@@ -84,7 +97,7 @@ function App() {
           onPlus={onAddCard}
           onRemove={onDeleteCard}
           onAddFavorites={onAddFavorites}
-           />}/>
+          />}/>
     </Route>
     </Routes></>
   );

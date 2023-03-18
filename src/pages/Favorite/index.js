@@ -30,7 +30,7 @@ const PageFavorites=({itemsUser, onPlus, onRemove, onAddFavorites, favorites})=>
           onPlus={onPlus}
           onRemove={onRemove}
           onAddFavorites={onAddFavorites}/></div> : <div className={styles.container__emptyFavorites}>
-        <img className={styles.imgSmile} src='/img/NoFavorites.jpg' alt='No Favorites' width={70} height={70}/>
+        <img className={styles.imgSmile} src='img/NoFavorites.jpg' alt='No Items' width={70} height={70}/>
         <h1>Закладок нет :(</h1>
         <p>Вы ничего не добавляли в закладки</p>
             <ButtonBack/>
