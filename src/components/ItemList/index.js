@@ -89,24 +89,21 @@ import { Card } from 'components/Card';
 //   price: 12840
 //  }]
 export const ItemList = ({ items, itemsUser, onPlus, onRemove, onAddFavorites, searchValue, favorites, isLoading }) => {
-  const filteredItems = items.filter(item => item.title.toLowerCase().includes(searchValue.toLowerCase()))
-  
-  console.log(isLoading)
+  const filteredItems=items.filter(item=>item.title.toLowerCase().includes(searchValue.toLowerCase()))
     return(<ul className={styles.sneakers__list}>
-          {isLoading ? [...Array(10)] : filteredItems.map((item)=>
-            (<Card
-              key={item.id}
-              items={items}
+          {(isLoading ? [...Array(10)] : filteredItems).map((item,index)=>{
+            return (<Card
+              key={index}
               favorites={favorites}
               itemsUser={itemsUser}
-              img={item.img}
-              title={item.title}
-              price={item.price}
+              inCart={itemsUser.some(cartItem => cartItem.title === item.title)}
+              {...item}
               onPlus={onPlus}
               onRemove={onRemove}
               onAddFavorites={onAddFavorites}
               isLoading={isLoading}
-              id={item.id.toString()} />)
-          )}
+              // id={item?.id.toString()}
+            />)
+          })}
             </ul>)
 }

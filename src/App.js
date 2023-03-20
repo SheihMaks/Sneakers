@@ -21,12 +21,12 @@ function App() {
     // fetch('https://63fd1397677c415873196c8d.mockapi.io/items').then(res => { return res.json() }).then(res => setItems(res))
     async function fetchItems() {
       try {
-        setIsLoading(true)
+        const resCart = await axios.get('https://63fd1397677c415873196c8d.mockapi.io/cart')
         const resItems= await axios.get('https://63fd1397677c415873196c8d.mockapi.io/items')
-      const resCart = await axios.get('https://63fd1397677c415873196c8d.mockapi.io/cart')
-        setIsLoading(false)
+      
         setItemsUser([...resCart.data])
         setItems([...resItems.data])
+        setIsLoading(false)
         
       } catch {
         alert('error')
@@ -58,7 +58,7 @@ function App() {
   }
   
   const onDeleteCard = (id) => {
-    // console.log(id)
+    console.log(id)
     axios.delete(`https://63fd1397677c415873196c8d.mockapi.io/cart/${id}`)
     setItemsUser((prev)=>prev.filter(item=> item.id!==id))
     }
