@@ -1,3 +1,4 @@
+import React from "react";
 import { useState, useEffect } from 'react'
 import axios from 'axios';
 import {Routes, Route} from 'react-router-dom';
@@ -7,6 +8,8 @@ import { Drawer } from 'components/Drawer';
 import {SearchBox} from 'components/SearchBox';
 import {ItemList} from 'components/ItemList';
 
+const AppContext = React.createContext({})
+
 function App() {
   const [items, setItems] = useState([])
   const [itemsUser, setItemsUser] = useState([])
@@ -15,15 +18,16 @@ function App() {
   })
   const [searchValue,setSearchValue]=useState('')
   const [isOpenDrawer, setIsOpenDrawer] = useState(false)
-  const [isLoading,setIsLoading]= useState(true)
+  const [isLoading,setIsLoading]= useState(false)
   
   useEffect(() => {
     // fetch('https://63fd1397677c415873196c8d.mockapi.io/items').then(res => { return res.json() }).then(res => setItems(res))
     async function fetchItems() {
       try {
+        setIsLoading(true)
         const resCart = await axios.get('https://63fd1397677c415873196c8d.mockapi.io/cart')
         const resItems= await axios.get('https://63fd1397677c415873196c8d.mockapi.io/items')
-      
+       
         setItemsUser([...resCart.data])
         setItems([...resItems.data])
         setIsLoading(false)
